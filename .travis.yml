@@ -1,6 +1,6 @@
 language: generic
 install:
-  script:
+script:
   - "./build.sh"
 deploy:
   api_key:
