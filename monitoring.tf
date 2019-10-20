@@ -1,4 +1,4 @@
-tresource "statuscake_test" "stage" {
+resource "statuscake_test" "stage" {
   website_name  = "exam-stage"
   website_url   = "${heroku_app.staging.web_url}"
   test_type     = "HTTP"
