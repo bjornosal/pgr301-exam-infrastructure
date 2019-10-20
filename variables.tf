@@ -5,3 +5,7 @@ variable "app_prefix" {
 variable "pipeline_name" {
   default = "pgr301-pipeline"
 }
+
+variable "bucket-name" {
+    default="salbjo-pgr301"
+}
