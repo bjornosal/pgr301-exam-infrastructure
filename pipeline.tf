@@ -1,12 +1,11 @@
 # Create Heroku apps for ci, staging and production
-resource "heroku_app" "ci" {
-  name   = "${var.app_prefix}-app-ci"
+resource "heroku_app" "developement" {
+  name   = "${var.app_prefix}-app-dev"
   region = "eu"
 }
 
-# Create a database, and configure the app to use it
-resource "heroku_addon" "db_ci" {
-  app  = "${heroku_app.ci.name}"
+resource "heroku_addon" "db_development" {
+  app  = "${heroku_app.developement.name}"
   plan = "heroku-postgresql:hobby-dev"
 }
 
@@ -32,26 +31,25 @@ resource "heroku_addon" "db_prod" {
   plan = "heroku-postgresql:hobby-dev"
 }
 
-resource "heroku_pipeline" "test-app" {
+resource "heroku_pipeline" "exam" {
   name = "${var.pipeline_name}"
 }
 
 # Couple apps to different pipeline stages
-resource "heroku_pipeline_coupling" "ci" {
-  app      = "${heroku_app.ci.name}"
-  pipeline = "${heroku_pipeline.test-app.id}"
+resource "heroku_pipeline_coupling" "developement" {
+  app      = "${heroku_app.developement.name}"
+  pipeline = "${heroku_pipeline.exam.id}"
   stage    = "development"
 }
 
-# Couple apps to different pipeline stages
 resource "heroku_pipeline_coupling" "staging" {
   app      = "${heroku_app.staging.name}"
-  pipeline = "${heroku_pipeline.test-app.id}"
+  pipeline = "${heroku_pipeline.exam.id}"
   stage    = "staging"
 }
 
 resource "heroku_pipeline_coupling" "production" {
   app      = "${heroku_app.production.name}"
-  pipeline = "${heroku_pipeline.test-app.id}"
+  pipeline = "${heroku_pipeline.exam.id}"
   stage    = "production"
 }
