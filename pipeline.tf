@@ -1,5 +1,5 @@
 # Create Heroku apps for ci, staging and production
-resource "heroku_app" "developement" {
+resource "heroku_app" "development" {
   name   = "${var.app_prefix}-app-dev"
   region = "eu"
 }
