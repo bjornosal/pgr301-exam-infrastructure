@@ -1,16 +1,16 @@
 resource "heroku_config" "dev_app_name" {
   vars = {
-    APP_NAME = "DEV"
+    APP_NAME = "PGR301_DEV"
   }
 }
 resource "heroku_config" "staging_app_name" {
   vars = {
-    APP_NAME = "STAGING"
+    APP_NAME = "PGR301_STAGING"
   }
 }
 resource "heroku_config" "prod_app_name" {
   vars = {
-    APP_NAME = "PROD"
+    APP_NAME = "PGR301_PROD"
   }
 }
 
