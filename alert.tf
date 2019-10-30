@@ -13,7 +13,7 @@ resource "opsgenie_user" "user1" {
 
 resource "opsgenie_user_contact" "sms" {
   username = "${opsgenie_user.user1.username}"
-  to      = "004791761030"
+  to      = "47-91761030"
   method  = "sms"
 }
 
@@ -25,6 +25,6 @@ resource "opsgenie_user_contact" "email" {
 
 resource "opsgenie_user_contact" "voice" {
   username = "${opsgenie_user.user1.username}"
-  to      = "004791761030"
+  to      = "47-91761030"
   method  = "voice"
 }
