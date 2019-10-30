@@ -12,22 +12,19 @@ resource "opsgenie_user" "user1" {
 }
 
 resource "opsgenie_user_contact" "sms" {
-  username  = "user1@some.domain.com"
-  user_id = "${opsgenie_user.user1.id}"
+  username = "${opsgenie_user.user1.username}"
   to      = "+4791761030"
   method  = "sms"
 }
 
 resource "opsgenie_user_contact" "email" {
-  username  = "user1@some.domain.com"
-  user_id = "${opsgenie_user.user1.id}"
+  username = "${opsgenie_user.user1.username}"
   to      = "bjorn.olav.salvesen@gmail.com"
   method  = "email"
 }
 
 resource "opsgenie_user_contact" "voice" {
-  username  = "user1@some.domain.com"
-  user_id = "${opsgenie_user.user1.id}"
+  username = "${opsgenie_user.user1.username}"
   to      = "+4791761030"
   method  = "voice"
 }
