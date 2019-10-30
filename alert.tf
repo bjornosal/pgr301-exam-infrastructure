@@ -11,3 +11,20 @@ resource "opsgenie_user" "user1" {
   timezone  = "Europe/Oslo"
 }
 
+resource "opsgenie_user_contact" "sms" {
+  user_id = "${opsgenie_user.user1.id}"
+  to      = "+4791761030"
+  method  = "sms"
+}
+
+resource "opsgenie_user_contact" "email" {
+  user_id = "${opsgenie_user.user1.id}"
+  to      = "bjorn.olav.salvesen@gmail.com"
+  method  = "email"
+}
+
+resource "opsgenie_user_contact" "voice" {
+  user_id = "${opsgenie_user.user1.id}"
+  to      = "+4791761030"
+  method  = "voice"
+}
