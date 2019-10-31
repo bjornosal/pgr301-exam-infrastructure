@@ -6,7 +6,7 @@ chmod +x terraform
 
 ./terraform init
 ./terraform validate
-./terraform destroy -auto-approve
+./terraform refresh
 ./terraform plan
 
 if [[ $TRAVIS_BRANCH == 'master' ]]
