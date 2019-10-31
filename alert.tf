@@ -48,23 +48,5 @@ resource "opsgenie_user_contact" "user1_voice" {
   method   = "voice"
 }
 
-resource "opsgenie_user_contact" "user2_email" {
-  username = "${opsgenie_user.user2.username}"
-  to       = "user2@second.work.email.com"
-  method   = "email"
-}
-
-resource "opsgenie_user_contact" "user2_voice" {
-  username = "${opsgenie_user.user2.username}"
-  to       = "47-99999999"
-  method   = "voice"
-}
-
-resource "opsgenie_user_contact" "user2_sms" {
-  username = "${opsgenie_user.user2.username}"
-  to       = "47-99999999"
-  method   = "sms"
-}
-
 #End user contact
 
