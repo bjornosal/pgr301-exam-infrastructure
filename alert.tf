@@ -88,7 +88,7 @@ resource "opsgenie_team" "tier_one" {
   }
 }
 
-resource "opsgenie_team" "tier_one" {
+resource "opsgenie_team" "supermen" {
   name        = "Superadmins"
   description = "This team fixes all the things that has Tier 1 can't handle"
 
