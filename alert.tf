@@ -29,24 +29,5 @@ resource "opsgenie_user" "user2" {
 }
 #End users
 
-#User contact
-resource "opsgenie_user_contact" "user1_sms" {
-  username = "${opsgenie_user.user1.username}"
-  to       = "47-91761030"
-  method   = "sms"
-}
-
-resource "opsgenie_user_contact" "user1_email" {
-  username = "${opsgenie_user.user1.username}"
-  to       = "bjorn.olav.salvesen@gmail.com"
-  method   = "email"
-}
-
-resource "opsgenie_user_contact" "user1_voice" {
-  username = "${opsgenie_user.user1.username}"
-  to       = "47-91761030"
-  method   = "voice"
-}
-
 #End user contact
 
