@@ -104,7 +104,6 @@ resource "opsgenie_schedule" "tier_one_schedule" {
   name          = "tier1-schedule"
   description   = "Schedule for the Tier 1 team"
   timezone      = "Europe/Oslo"
-  enabled       = false
   owner_team_id = "${opsgenie_team.tier_one.id}"
 }
 
