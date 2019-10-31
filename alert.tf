@@ -30,12 +30,6 @@ resource "opsgenie_user" "user2" {
 #End users
 
 #User contact
-resource "opsgenie_user_contact" "user1_sms" {
-  username = "${opsgenie_user.user1.username}"
-  to       = "47-91761030"
-  method   = "sms"
-}
-
 resource "opsgenie_user_contact" "user1_email" {
   username = "${opsgenie_user.user1.username}"
   to       = "bjorn.olav.salvesen@gmail.com"
@@ -66,7 +60,7 @@ resource "opsgenie_user_contact" "user2_sms" {
   method   = "sms"
 }
 
-resource "opsgenie_user_contact" "super" {
+resource "opsgenie_user_contact" "super_contact" {
   username = "${opsgenie_user.superuser.username}"
   to       = "47-99999999"
   method   = "voice"
@@ -107,12 +101,12 @@ resource "opsgenie_schedule" "tier_one_schedule" {
   owner_team_id = "${opsgenie_team.tier_one.id}"
 }
 
-resource "opsgenie_schedule_rotation" "tier_1_rotation" { 
+resource "opsgenie_schedule_rotation" "tier_1_rotation" {
   schedule_id = "${opsgenie_schedule.tier_one_schedule.id}"
   name        = "tier1-schedule-rotation"
   start_date  = "2019-11-05T00:00:00Z"
-  end_date    ="2019-12-04T08:00:00Z"
-  type        ="daily"
+  end_date    = "2019-12-04T08:00:00Z"
+  type        = "daily"
   length      = 8
 
   participant {
