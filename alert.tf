@@ -30,11 +30,6 @@ resource "opsgenie_user" "user2" {
 #End users
 
 #User contact
-resource "opsgenie_user_contact" "user1_sms" {
-  username = "${opsgenie_user.user1.id}"
-  to       = "47-91761030"
-  method   = "sms"
-}
 
 resource "opsgenie_user_contact" "user1_email" {
   username = "${opsgenie_user.user1.username}"
@@ -60,11 +55,6 @@ resource "opsgenie_user_contact" "user2_voice" {
   method   = "voice"
 }
 
-resource "opsgenie_user_contact" "user2_sms" {
-  username = "${opsgenie_user.user2.id}"
-  to       = "47-99999999"
-  method   = "sms"
-}
 
 resource "opsgenie_user_contact" "super_contact" {
   username = "${opsgenie_user.superuser.username}"
