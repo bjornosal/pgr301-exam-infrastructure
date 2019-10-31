@@ -168,6 +168,8 @@ resource "opsgenie_schedule_rotation" "supermen_rotation" {
 
 #End schedule rotation
 
+#Escalation
+
 resource "opsgenie_escalation" "tier_1_to_supermen_escalation" {
   name          = "Escalate to the supermen of this world"
   description   = "When Tier 1 just can't handle it"
@@ -183,11 +185,5 @@ resource "opsgenie_escalation" "tier_1_to_supermen_escalation" {
       id   = "${opsgenie_schedule.tier_one_schedule.id}"
     }
   }
-
-  repeat {
-    wait_interval          = 10
-    count                  = 1
-    reset_recipient_states = true
-    close_alert_after_all  = false
-  }
+ 
 }
