@@ -66,11 +66,6 @@ resource "opsgenie_user_contact" "user2_sms" {
   method   = "sms"
 }
 
-resource "opsgenie_user_contact" "super_contact" {
-  username = "${opsgenie_user.superuser.username}"
-  to       = "47-99999999"
-  method   = "voice"
-}
 #End user contact
 
 # Teams
