@@ -111,8 +111,8 @@ resource "opsgenie_schedule" "tier_one_schedule" {
 resource "opsgenie_schedule_rotation" "tier_1_rotation" { 
   schedule_id = "${opsgenie_schedule.tier_one_schedule.id}"
   name        = "tier1-schedule-rotation"
-  start_date  = "2019-11-04T17:45:00Z"
-  end_date    ="2019-12-04T17:45:00Z"
+  start_date  = "2019-11-05T00:00:00Z"
+  end_date    ="2019-12-04T08:00:00Z"
   type        ="daily"
   length      = 8
 
