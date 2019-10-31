@@ -101,18 +101,18 @@ resource "opsgenie_team" "supermen" {
 
 #Schedule
 resource "opsgenie_schedule" "tier_one_schedule" {
-  name          = "tier1-schedule"
+  name          = "Tier 1 schedule - Exam deliveries"
   description   = "Schedule for the Tier 1 team"
   timezone      = "Europe/Oslo"
   owner_team_id = "${opsgenie_team.tier_one.id}"
 }
 
-resource "opsgenie_schedule_rotation" "tier_1_rotation" { 
+resource "opsgenie_schedule_rotation" "tier_1_rotation" {
   schedule_id = "${opsgenie_schedule.tier_one_schedule.id}"
-  name        = "tier1-schedule-rotation"
+  name        = "Tier 1 Schedule Rotation"
   start_date  = "2019-11-05T00:00:00Z"
-  end_date    ="2019-12-04T08:00:00Z"
-  type        ="daily"
+  end_date    = "2019-12-04T08:00:00Z"
+  type        = "hourly"
   length      = 8
 
   participant {
