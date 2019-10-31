@@ -160,8 +160,8 @@ resource "opsgenie_schedule_rotation" "supermen_rotation" {
     restriction {
       start_hour = 0
       start_min  = 0
-      end_hour   = 24
-      end_min    = 0
+      end_hour   = 23
+      end_min    = 59
     }
   }
 }
