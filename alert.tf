@@ -198,8 +198,8 @@ resource "opsgenie_escalation" "tier_1_on_call" {
 }
 
 resource "opsgenie_escalation" "tier1_to_supermen" {
-  name          = "tier1_couldnt_handle"
-  description   = "Tier 1 couldn't handle it"
+  name          = "Tier 1 is too slow"
+  description   = "Escalates to the supermen"
   owner_team_id = "${opsgenie_team.tier_one.id}"
 
   rules {
