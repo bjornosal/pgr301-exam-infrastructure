@@ -161,7 +161,7 @@ resource "opsgenie_schedule_rotation" "supermen_rotation" {
       start_hour = 0
       start_min  = 0
       end_hour   = 23
-      end_min    = 59
+      end_min    = 0
     }
   }
 }
