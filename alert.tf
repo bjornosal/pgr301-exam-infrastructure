@@ -170,9 +170,9 @@ resource "opsgenie_schedule_rotation" "supermen_rotation" {
 
 #Escalation
 
-resource "opsgenie_escalation" "tier_1_to_supermen_escalation" {
+resource "opsgenie_escalation" "tier_1_on_call" {
   name          = "Give Tier 1 something to do"
-  description   = "When Tier 1 just can't handle it"
+  description   = "Something bad happened"
   owner_team_id = "${opsgenie_team.tier_one.id}"
 
   rules {
@@ -195,6 +195,12 @@ resource "opsgenie_escalation" "tier_1_to_supermen_escalation" {
       id   = "${opsgenie_team.tier_one.id}"
     }
   }
+}
+
+resource "opsgenie_escalation" "tier1_to_supermen" {
+  name          = "tier1_couldnt_handle"
+  description   = "Tier 1 couldn't handle it"
+  owner_team_id = "${opsgenie_team.tier_one.id}"
 
   rules {
     condition   = "if-not-closed"
