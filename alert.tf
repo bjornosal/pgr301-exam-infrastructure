@@ -107,10 +107,19 @@ resource "opsgenie_schedule" "tier_one_schedule" {
   owner_team_id = "${opsgenie_team.tier_one.id}"
 }
 
+resource "opsgenie_schedule" "supermen_schedule" {
+  name          = "supermen_schedule_no_sleep"
+  description   = "Schedule for the supermen"
+  timezone      = "Europe/Oslo"
+  owner_team_id = "${opsgenie_team.supermen.id}"
+}
+# End schedule
+
+# Schedule rotation
 resource "opsgenie_schedule_rotation" "tier_1_rotation" {
   schedule_id = "${opsgenie_schedule.tier_one_schedule.id}"
   name        = "Tier 1 Schedule Rotation"
-  start_date  = "2019-11-05T00:00:00Z"
+  start_date  = "2019-11-04T23:00:00Z"
   end_date    = "2019-12-04T08:00:00Z"
   type        = "hourly"
   length      = 8
@@ -129,5 +138,56 @@ resource "opsgenie_schedule_rotation" "tier_1_rotation" {
       end_hour   = 8
       end_min    = 0
     }
+  }
+}
+
+resource "opsgenie_schedule_rotation" "supermen_rotation" {
+  schedule_id = "${opsgenie_schedule.supermen_schedule.id}"
+  name        = "Supermen Schedule Rotation"
+  start_date  = "2019-11-04T23:00:00Z"
+  end_date    = "2019-12-04T08:00:00Z"
+  type        = "hourly"
+  length      = 24
+
+  participant {
+    type = "team"
+    id   = "${opsgenie_team.supermen.id}"
+  }
+
+  time_restriction {
+    type = "time-of-day"
+
+    restriction {
+      start_hour = 0
+      start_min  = 0
+      end_hour   = 24
+      end_min    = 0
+    }
+  }
+}
+
+#End schedule rotation
+
+resource "opsgenie_escalation" "tier_1_to_supermen_escalation" {
+  name          = "Escalate to the supermen of this world"
+  description   = "When Tier 1 just can't handle it"
+  owner_team_id = "${opsgenie_team.tier_one.id}"
+
+  rules {
+    condition   = "if-not-acked"
+    notify_type = "default"
+    delay       = 1
+
+    recipient {
+      type = "schedule"
+      id   = "${opsgenie_schedule.tier_one_schedule.id}"
+    }
+  }
+
+  repeat {
+    wait_interval          = 10
+    count                  = 1
+    reset_recipient_states = true
+    close_alert_after_all  = false
   }
 }
