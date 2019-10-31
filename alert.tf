@@ -97,3 +97,38 @@ resource "opsgenie_team" "tier_one" {
     role = "admin"
   }
 }
+# End teams
+
+#Schedule
+resource "opsgenie_schedule" "tier_one_schedule" {
+  name          = "tier1-schedule"
+  description   = "Schedule for the Tier 1 team"
+  timezone      = "Europe/Oslo"
+  enabled       = false
+  owner_team_id = "${opsgenie_team.tier_one.id}"
+}
+
+resource "opsgenie_schedule_rotation" "tier_1_rotation" { 
+  schedule_id = "${opsgenie_schedule.tier_one_schedule.id}"
+  name        = "tier1-schedule-rotation"
+  start_date  = "2019-11-04T17:45:00Z"
+  end_date    ="2019-12-04T17:45:00Z"
+  type        ="daily"
+  length      = 8
+
+  participant {
+    type = "team"
+    id   = "${opsgenie_team.tier_one.id}"
+  }
+
+  time_restriction {
+    type = "time-of-day"
+
+    restriction {
+      start_hour = 0
+      start_min  = 0
+      end_hour   = 8
+      end_min    = 0
+    }
+  }
+}
