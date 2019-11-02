@@ -32,19 +32,19 @@ resource "opsgenie_user" "user2" {
 #User contact
 resource "opsgenie_user_contact" "user1_sms" {
   username = "${opsgenie_user.user1.username}"
-  to       = "47-91761030"
+  to       = "47-99356459"
   method   = "sms"
 }
 
 resource "opsgenie_user_contact" "user1_email" {
   username = "${opsgenie_user.user1.username}"
-  to       = "bjorn.olav.salvesen@gmail.com"
+  to       = "user1@usermail.no"
   method   = "email"
 }
 
 resource "opsgenie_user_contact" "user1_voice" {
   username = "${opsgenie_user.user1.username}"
-  to       = "47-91761030"
+  to       = "47-99356459"
   method   = "voice"
 }
 

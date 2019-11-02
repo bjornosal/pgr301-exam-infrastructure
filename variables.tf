@@ -1,5 +1,5 @@
 variable "app_prefix" {
-  default = "salbjo-pgr301"
+  default = "sens-pgr301"
 }
 
 variable "pipeline_name" {
